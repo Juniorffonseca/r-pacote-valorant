@@ -4,6 +4,8 @@
 #' @export
 # Função medias_times -------------------------------------------------------------------------------------
 medias_Times <- function (url_partida){
+  tryCatch(
+    {
   # Pegando os dados no link da partida -------------------------------------------------------------------
   links_jogadores <- read_html('https://www.vlr.gg/162404/northwood-university-vs-o7-red-bull-campus-clutch-2022-world-final-stage-gf') %>%
     html_nodes('td.mod-player a') %>%
@@ -54,5 +56,6 @@ medias_Times <- function (url_partida){
   partida <- as.data.frame(t(colMeans(partida)))
 
   return(partida)
-
+    }
+  , error = function(e){cat('error:', conditionMessage(e), '\n')})
 }
