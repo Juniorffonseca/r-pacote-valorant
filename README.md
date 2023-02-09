@@ -4,6 +4,6 @@
 #### Contém funções que facilitam a obtenção de dados e o manuseio dos mesmos.
 
 
-##Pacote utilizados:
+## Pacote utilizados:
 library(devtools)
 library(roxygen2)
