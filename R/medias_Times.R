@@ -5,7 +5,7 @@
 # Função medias_times -------------------------------------------------------------------------------------
 medias_Times <- function (url_partida){
   # Pegando os dados no link da partida -------------------------------------------------------------------
-  links_jogadores <- read_html(url_partida) %>%
+  links_jogadores <- read_html('https://www.vlr.gg/162404/northwood-university-vs-o7-red-bull-campus-clutch-2022-world-final-stage-gf') %>%
     html_nodes('td.mod-player a') %>%
     html_attr('href')
 
@@ -37,10 +37,11 @@ medias_Times <- function (url_partida){
     timeB_medias[[length(timeB_medias)+1]] <- medias_Jogadores(i)
   }
 
-  timeA_medias <- round(rowMeans(as.data.frame(timeA_medias)), 2) %>% t %>% as.data.frame
-  timeA_medias$KAST <- round(timeA_medias$KAST, 0)
+  timeA_medias <- timeA_medias %>% map_df(as_tibble)
+  timeB_medias <- timeB_medias %>% map_df(as_tibble)
 
-  timeB_medias <- round(rowMeans(as.data.frame(timeB_medias)), 2) %>% t %>% as.data.frame
+  timeA_medias <- dplyr::select(timeA_medias, -Use)
+  timeB_medias <- dplyr::select(timeB_medias, -Use)
 
   partida <- cbind(timeA_medias, timeB_medias)
 
@@ -49,6 +50,8 @@ medias_Times <- function (url_partida){
 
   partida <- select(partida, 'time1R', 'time2R', 'time1ACS', 'time2ACS', 'time1KAST', 'time2KAST', 'time1KD', 'time2KD',
                     'time1ADR', 'time2ADR')
+
+  partida <- as.data.frame(t(colMeans(partida)))
 
   return(partida)
 
