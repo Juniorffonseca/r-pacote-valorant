@@ -1,0 +1,12 @@
+Package: valorant
+Title: Funções utilizadas em um projeto de rede neural para o jogo Valorant
+Version: 0.0.0.9000
+Authors@R: 
+    person("Edinaldo", "Junior", role = c("aut","cre"), email = "edinaldoffjunior@gmail.com",
+           comment = c(ORCID = "0000-0001-9967-7799"))
+Description: Esse pacote contém funções que auxiliam no processo de webscraping e manuseio dos dados.
+License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
+    license
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
