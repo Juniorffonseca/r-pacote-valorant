@@ -2,3 +2,4 @@
 
 export(medias_Jogadores)
 export(medias_Times)
+export(get_Gnhadores)
