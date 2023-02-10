@@ -7,7 +7,7 @@ medias_Times <- function (url_partida){
   tryCatch(
     {
   # Pegando os dados no link da partida -------------------------------------------------------------------
-  links_jogadores <- read_html('https://www.vlr.gg/162404/northwood-university-vs-o7-red-bull-campus-clutch-2022-world-final-stage-gf') %>%
+  links_jogadores <- read_html(url_partida) %>%
     html_nodes('td.mod-player a') %>%
     html_attr('href')
 
