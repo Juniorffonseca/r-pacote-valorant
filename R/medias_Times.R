@@ -55,6 +55,10 @@ medias_Times <- function (url_partida){
 
   partida <- as.data.frame(t(colMeans(partida)))
 
+  ganhador <- get_Ganhadores(url_partida)
+
+  partida <- cbind(partida, ganhador)
+
   return(partida)
     }
   , error = function(e){cat('error:', conditionMessage(e), '\n')})
