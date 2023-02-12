@@ -10,7 +10,7 @@ medias_Jogadores <- function(url_jogador){
   dados_jogador <- html_nodes(html_lido, 'table') %>%
     html_table()
   dados_jogador <- dados_jogador %>% map_df(as_tibble, .name_repair = 'minimal') %>%
-    dplyr::select(Use, Rating, ACS, KAST, 'K:D', ADR)
+    dplyr::select('Use', 'Rating', 'ACS', 'KAST', 'K:D', 'ADR')
 
   dados_jogador$Use <- as.numeric(gsub(".*\\((.*)\\).*", "\\1", dados_jogador$Use))
 
