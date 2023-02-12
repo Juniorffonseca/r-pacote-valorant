@@ -3,7 +3,7 @@
 #' Para utilizar: medias_Times()
 #' @export
 # Função medias_times -------------------------------------------------------------------------------------
-medias_Times <- function (url_partida){
+medias_Times <- function (url_partida, resultado = F){
   tryCatch(
     {
   # Pegando os dados no link da partida -------------------------------------------------------------------
@@ -55,9 +55,12 @@ medias_Times <- function (url_partida){
 
   partida <- as.data.frame(t(colMeans(partida)))
 
-  ganhador <- get_Ganhadores(url_partida)
+  if(resultado == TRUE){
 
+  ganhador <- get_Ganhadores(url_partida)
   partida <- cbind(partida, ganhador)
+
+  }
 
   return(partida)
     }
