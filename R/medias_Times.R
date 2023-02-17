@@ -47,11 +47,12 @@ medias_Times <- function (url_partida, resultado = F){
 
       partida <- cbind(timeA_medias, timeB_medias)
 
-      colnames(partida) <- c('time1R', 'time1ACS', 'time1KAST', 'time1KD', 'time1ADR',
-                             'time2R', 'time2ACS', 'time2KAST', 'time2KD', 'time2ADR')
-
-      partida <- select(partida, 'time1R', 'time2R', 'time1ACS', 'time2ACS', 'time1KAST', 'time2KAST', 'time1KD', 'time2KD',
-                        'time1ADR', 'time2ADR')
+      colnames(partida) <- c('time1RND', 'time1R', 'time1ACS', 'time1KAST', 'time1KD', 'time1ADR',
+                             'time1KPR', 'time1APR', 'time1FKPR', 'time1FDPR', 'time1K', 'time1D',
+                             'time1A', 'time1FK', 'time1FD',
+                             'time2RND', 'time2R', 'time2ACS', 'time2KAST', 'time2KD', 'time2ADR',
+                             'time2KPR', 'time2APR', 'time2FKPR', 'time2FDPR', 'time2K', 'time2D',
+                             'time2A', 'time2FK', 'time2FD')
 
       partida <- as.data.frame(t(colMeans(partida)))
 
