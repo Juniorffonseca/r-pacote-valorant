@@ -46,6 +46,15 @@ prever <- function(link){
   a <- previsao
   b <- previsao2
 
+  transforma_probabilidade <- function (y, x){
+    z = y / (y + x)
+    w = x / (x + y)
+    c = as.matrix(c(z,w))
+    return(c)
+  }
+
+  previsao <- transforma_probabilidade(a,b)
+
   previsao <- previsao * 100
 
   return(previsao)
