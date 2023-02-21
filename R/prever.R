@@ -7,7 +7,7 @@ prever <- function(link){
   # Pegando os dados no link da partida ----------------------------------------------------------------------
   partida <- medias_Times(link)
 
-  jogos_scale <- read.csv2('csv/partidas.csv') %>% select(-X, -ganhador)
+  jogos_scale <- read.csv2('csv/partidas_teste.csv') %>% dplyr::select(-X, -ganhador)
 
   jogos_scale <- rbind(jogos_scale, partida)
 
@@ -45,15 +45,6 @@ prever <- function(link){
 
   a <- previsao
   b <- previsao2
-
-
-
-  transforma_probabilidade <- function (y, x){
-    z = y / (y + x)
-    w = x / (x + y)
-    c = as.matrix(c(z,w))
-    return(c)
-  }
 
   previsao <- transforma_probabilidade(a,b)
 
