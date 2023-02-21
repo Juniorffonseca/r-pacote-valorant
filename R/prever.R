@@ -46,8 +46,6 @@ prever <- function(link){
   a <- previsao
   b <- previsao2
 
-  previsao <- transforma_probabilidade(a,b)
-
   previsao <- previsao * 100
 
   return(previsao)
