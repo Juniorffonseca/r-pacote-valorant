@@ -19,9 +19,6 @@ prever <- function(link){
 
   partida <- as.data.frame(partida)
 
-  colnames(partida) <- c('time1R', 'time2R', 'time1ACS', 'time2ACS', 'time1KAST', 'time2KAST', 'time1KD', 'time2KD',
-                         'time1ADR', 'time2ADR')
-
   previsao <- compute(n, partida)
 
   previsao <- previsao$net.result[1]
