@@ -6,7 +6,7 @@ achar_Nn <- function(){
 
   n <<- neuralnet(ganhador == 1 ~ .,
                   data = training_data,
-                  hidden = c(10),
+                  hidden = hidden_n,
                   err.fct = "sse",
                   linear.output = F,
                   threshold = 1,
