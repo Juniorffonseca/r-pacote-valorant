@@ -25,7 +25,7 @@ achar_Seed <- function(seed, prob_a, prob_b, hidden_n){
   training_data$ganhador <- as.factor(training_data$ganhador)
   test_data$ganhador <- as.factor(test_data$ganhador)
 
-  n <- neuralnet(ganhador == 1 ~ .,
+  n <- neuralnet(formula,
                  data = training_data,
                  hidden = hidden_n,
                  err.fct = "sse",
@@ -38,7 +38,7 @@ achar_Seed <- function(seed, prob_a, prob_b, hidden_n){
 
   Predict = compute(n, test_data)
 
-  nn2 <- ifelse(Predict$net.result[,1]>0.5,1,0)
+  nn2 <- ifelse(condicao,1,0)
 
   predictVstest <- cbind(test_data, Predict$net.result)
   i <<- sum(predictVstest$ganhador == nn2)/ nrow(test_data)

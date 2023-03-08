@@ -4,7 +4,7 @@
 #' @export
 achar_Nn <- function(){
 
-  n <<- neuralnet(ganhador == 1 ~ .,
+  n <<- neuralnet(formula,
                   data = training_data,
                   hidden = hidden_n,
                   err.fct = "sse",
@@ -17,10 +17,10 @@ achar_Nn <- function(){
 
   Predict <<- compute(n, test_data)
 
-  nn2 <<- ifelse(Predict$net.result[,1]>0.5,1,0)
+  nn2 <<- ifelse(condicao,1,0)
 
   predictVstest <<- cbind(test_data, Predict$net.result)
-  i <<- sum(predictVstest$ganhador == nn2)/ nrow(test_data)
+  i <<- sum(predictVstest$ganhador == nn2)/nrow(test_data)
   print(i)
 
   z <<- ifelse(i>z, z <<- i, z <<- z)
