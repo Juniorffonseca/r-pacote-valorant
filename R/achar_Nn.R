@@ -17,7 +17,7 @@ achar_Nn <- function(){
 
   Predict <<- compute(n, test_data)
 
-  nn2 <<- ifelse(condicao,1,0)
+  nn2 <<- ifelse(paste(condicao),1,0)
 
   predictVstest <<- cbind(test_data, Predict$net.result)
   i <<- sum(predictVstest$ganhador == nn2)/nrow(test_data)
