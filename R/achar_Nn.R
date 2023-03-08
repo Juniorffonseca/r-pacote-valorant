@@ -18,7 +18,7 @@ achar_Nn <- function(){
   Predict <<- compute(n, test_data)
 
   ifelse(n2 = T, nn2 <<- ifelse(Predict$net.result[,1]>Predict$net.result[,2],1,0),
-         ifelse(Predict$net.result[,1]>0.5),1,0)
+         nn2 <<- ifelse(Predict$net.result[,1]>0.5),1,0)
 
 
 
