@@ -20,7 +20,7 @@ achar_Nn <- function(){
   if(n2 == T){
   nn2 <<- ifelse(Predict$net.result[,1]>Predict$net.result[,2],1,0)
   }
-  else(){
+  else{
   nn2 <<- ifelse(Predict$net.result[,1]>0.5,1,0)
   }
 
