@@ -38,8 +38,12 @@ achar_Seed <- function(seed, prob_a, prob_b, hidden_n){
 
   Predict = compute(n, test_data)
 
-  ifelse(n2 == T, nn2 <<- ifelse(Predict$net.result[,1]>Predict$net.result[,2],1,0),
-         nn2 <<-ifelse(Predict$net.result[,1]>0.5),1,0)
+  if(n2 == T){
+    nn2 <<- ifelse(Predict$net.result[,1]>Predict$net.result[,2],1,0)
+  }
+  else(){
+    nn2 <<- ifelse(Predict$net.result[,1]>0.5),1,0)
+  }
 
   predictVstest <- cbind(test_data, Predict$net.result)
   i <<- sum(predictVstest$ganhador == nn2)/ nrow(test_data)
