@@ -21,7 +21,7 @@ achar_Nn <- function(){
   nn2 <<- ifelse(Predict$net.result[,1]>Predict$net.result[,2],1,0)
   }
   else(){
-  nn2 <<- ifelse(Predict$net.result[,1]>0.5),1,0)
+  nn2 <<- ifelse(Predict$net.result[,1]>0.5,1,0)
   }
 
   predictVstest <<- cbind(test_data, Predict$net.result)
