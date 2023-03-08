@@ -6,11 +6,13 @@
 #' prob_b: proporção da divisão da base de testes.
 #' hidden_n: numero de neuronios na(s) camada(s) escondida(s).
 #' @export
-achar_Seed <- function(seed, prob_a, prob_b, hidden_n){
+achar_Seed <- function(seed, hidden_n){
   set.seed(seed)
-  inp <- sample(2, nrow(jogos), replace = TRUE, prob = c(prob_a, prob_b))
-  training_data <- jogos[inp==1, ]
-  test_data <- jogos[inp==2, ]
+
+  index <- createDataPartition(jogos$ganhador, p = 0.7, list = F)
+
+  training_data <- jogos[index, ]
+  test_data <- jogos[-index, ]
 
   normalizando_test <- dplyr::select(test_data, -ganhador)
   normalizando_test <- as.data.frame(scale(normalizando_test))
