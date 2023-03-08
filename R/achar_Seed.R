@@ -9,10 +9,10 @@
 achar_Seed <- function(seed, hidden_n){
   set.seed(seed)
 
-  index <- createDataPartition(jogos$ganhador, p = 0.7, list = F)
+  data_split <- initial_split(jogos, prop = 0.7, strata = "ganhador")
 
-  training_data <- jogos[index, ]
-  test_data <- jogos[-index, ]
+  training_data <- training(data_split)
+  test_data <- testing(data_split)
 
   normalizando_test <- dplyr::select(test_data, -ganhador)
   normalizando_test <- as.data.frame(scale(normalizando_test))
