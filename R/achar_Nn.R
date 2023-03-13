@@ -2,7 +2,7 @@
 #' Função que itera para achar uma rede neural.
 #' Para utilizar: achar_Nn()
 #' @export
-achar_Nn <- function(){
+achar_Nn <- function(t){
 
   n <<- neuralnet(formula,
                   data = training_data,
