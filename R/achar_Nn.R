@@ -9,7 +9,7 @@ achar_Nn <- function(){
                   hidden = hidden_n,
                   err.fct = "sse",
                   linear.output = F,
-                  threshold = 1,
+                  threshold = t,
                   lifesign = 'minimal',
                   rep = 1,
                   algorithm = 'rprop-',
