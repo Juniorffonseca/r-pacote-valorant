@@ -6,7 +6,7 @@
 #' prob_b: proporção da divisão da base de testes.
 #' hidden_n: numero de neuronios na(s) camada(s) escondida(s).
 #' @export
-achar_Seed <- function(seed, hidden_n){
+achar_Seed <- function(seed, hidden_n, t){
   set.seed(seed)
 
   data_split <- initial_split(jogos, prop = 0.7, strata = "ganhador")
