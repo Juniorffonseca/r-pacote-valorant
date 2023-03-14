@@ -23,6 +23,26 @@ prever <- function(link){
 
   previsao <- previsao$net.result[1]
 
+  partida_reversa <- partida
+
+  partida_reversa[1:30] <- partida_reversa[, c(16:30, 1:15)]
+
+  previsao2 <- compute(n, partida_reversa)
+
+  previsao2 <- previsao2$net.result[1]
+
+  a <- previsao
+  b <- previsao2
+
+  transforma_probabilidade <- function (y, x){
+    z = y / (y + x)
+    w = x / (x + y)
+    c = as.matrix(c(z,w))
+    return(c)
+  }
+
+  previsao <- transforma_probabilidade(a,b)
+
   previsao <- previsao * 100
 
   return(previsao)
