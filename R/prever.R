@@ -45,12 +45,6 @@ prever <- function(link){
 
   previsao <- previsao * 100
 
-  nomes_times <- read_html(link) %>%
-    html_nodes('div.wf-title-med') %>%
-    html_text() %>% str_replace_all('\n', '') %>% str_replace_all('\t', '')
-
-  previsao <- paste(nomes_times, previsao, sep = ' ')
-
   return(previsao)
 
 }
