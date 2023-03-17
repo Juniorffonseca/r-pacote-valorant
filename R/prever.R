@@ -45,7 +45,7 @@ prever <- function(link){
 
   previsao <- previsao * 100
 
-  previsao <- paste(round(previsao, 2), '%', '')
+  previsao <- paste0(round(previsao, 2), '%', '')
 
   nomes_times <- read_html(link) %>%
     html_nodes('div.wf-title-med') %>%
