@@ -6,7 +6,7 @@
 #' prob_b: proporção da divisão da base de testes.
 #' hidden_n: numero de neuronios na(s) camada(s) escondida(s).
 #' @export
-achar_Seed <- function(seed, hidden_n, t){
+achar_Seed <- function(seed, hidden_n, t, mostrar_i = T){
   set.seed(seed)
 
   data_split <- initial_split(jogos, prop = 0.7, strata = "ganhador")
@@ -40,11 +40,12 @@ achar_Seed <- function(seed, hidden_n, t){
 
   Predict = compute(n, test_data)
 
-    nn2 <<- ifelse(Predict$net.result[,1]>0.5,1,0)
+  nn2 <<- ifelse(Predict$net.result[,1]>0.5,1,0)
 
   predictVstest <- cbind(test_data, Predict$net.result)
   i <<- sum(predictVstest$ganhador == nn2)/ nrow(test_data)
 
-  print(i)
-
+  if(mostrar_i == T){
+    print(i)
+  }
 }
