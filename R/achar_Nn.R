@@ -2,7 +2,7 @@
 #' Função que itera para achar uma rede neural.
 #' Para utilizar: achar_Nn()
 #' @export
-achar_Nn <- function(t){
+achar_Nn <- function(t, mostrar_i){
 
   n <<- neuralnet(formula,
                   data = training_data,
@@ -21,7 +21,9 @@ achar_Nn <- function(t){
 
   predictVstest <<- cbind(test_data, Predict$net.result)
   i <<- sum(predictVstest$ganhador == nn2)/nrow(test_data)
-  print(i)
+  if(mostrar_i == T){
+    print(i)
+  }
 
   z <<- ifelse(i>z, z <<- i, z <<- z)
 
