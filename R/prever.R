@@ -7,25 +7,36 @@ prever <- function(link){
   # Pegando os dados no link da partida ----------------------------------------------------------------------
   partida <- medias_Times(link)
 
+  vars <- c('RND', 'R', 'ACS', 'KAST', 'KD', 'ADR', 'KPR', 'APR', 'FKPR', 'FDPR', 'K', 'D', 'A', 'FK', 'FD')
+
+  for (i in vars) {
+    new_var <- paste0(i, "_diff")
+    partida[[new_var]] <- partida[[paste0("time1", i)]] - partida[[paste0("time2", i)]]
+  }
+
+  partida <- select(partida, ends_with("_diff"))
+
+  partida_reversa <- partida* -1
+
   jogos_scale <- read.csv2('csv/partidas_teste_10_04_2023.csv') %>% dplyr::select(-X, -ganhador)
 
-  jogos_scale <- rbind(jogos_scale, partida)
-
-  jogos_scale <- scale(jogos_scale)
+  jogos_scale <- rbind(jogos_scale, partida) %>% scale()
 
   partida <- jogos_scale[nrow(jogos_scale),]
 
-  partida <- t(partida)
+  jogos_scale <- read.csv2('csv/partidas_teste_10_04_2023.csv') %>% dplyr::select(-X, -ganhador)
 
-  partida <- as.data.frame(partida)
+  jogos_scale_reverso <- rbind(jogos_scale, partida_reversa) %>% scale()
+
+  partida_reversa <- jogos_scale_reverso[nrow(jogos_scale_reverso),]
+
+  partida <- t(partida) %>% as.data.frame()
 
   previsao <- compute(n, partida)
 
   previsao <- previsao$net.result[1]
 
-  partida_reversa <- partida
-
-  partida_reversa[1:30] <- partida_reversa[, c(16:30, 1:15)]
+  partida_reversa <- t(partida_reversa) %>% as.data.frame()
 
   previsao2 <- compute(n, partida_reversa)
 
