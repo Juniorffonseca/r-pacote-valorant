@@ -7,7 +7,7 @@ prever <- function(link){
   # Pegando os dados no link da partida ----------------------------------------------------------------------
   partida <- medias_Times(link)
 
-  jogos_scale <- read.csv2('csv/partidas_teste.csv') %>% dplyr::select(-X, -ganhador)
+  jogos_scale <- read.csv2('csv/partidas_teste_10_04_2023.csv') %>% dplyr::select(-X, -ganhador)
 
   jogos_scale <- rbind(jogos_scale, partida)
 
