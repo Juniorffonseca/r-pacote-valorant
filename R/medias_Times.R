@@ -65,5 +65,6 @@ medias_Times <- function (url_partida, resultado = F){
 
       return(partida)
     }
-    , error = function(e){cat('error:', conditionMessage(e), '\n')})
+    , error = function(e){cat('error:', conditionMessage(e), '\n')
+      return(NULL)})
 }
