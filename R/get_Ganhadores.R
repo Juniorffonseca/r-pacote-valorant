@@ -10,8 +10,8 @@ get_Ganhadores <- function(url_partida) {
     placar <- str_replace_all(placar, "\t", "") %>% str_replace_all("\n",
                                                                     "")
     placar <- as.data.frame(placar[1])
-    placar <- separate(placar, "placar[1]", into = c("Time1",
-                                                     "Time2"), sep = ":", extra = "merge")
+    placar <- separate(placar, "placar[1]", into = c("Time1", "Time2"),
+                       sep = ":", extra = "merge")
     if (placar$Time1 != placar$Time2) {
       ifelse(placar$Time1 > placar$Time2, ganhador <- 1, ganhador <- 0)
     }
@@ -21,6 +21,6 @@ get_Ganhadores <- function(url_partida) {
     return(ganhador)
   }, error = function(e) {
     message("Ocorreu um erro: ", conditionMessage(e))
-    return(NULL)
+    return("empate")
   })
 }
