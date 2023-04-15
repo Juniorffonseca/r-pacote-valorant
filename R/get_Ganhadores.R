@@ -3,7 +3,7 @@
 #' Para utilizar: get_Ganhadores(url)
 #' @export
 # Função get_Ganhadores ---------------------------------------------------------------------------------
-function(url_partida) {
+get_Ganhadores <- function(url_partida) {
   tryCatch({
     placar <- read_html(url_partida) %>% html_nodes("div.js-spoiler") %>%
       html_text(trim = T)
